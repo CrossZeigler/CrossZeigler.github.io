@@ -30,17 +30,18 @@ p, input, li {
 }
 
 h1 {
+  font-family: 'Baloo 2', cursive;
   font-size: 4rem;
   text-align: center;
   text-shadow: 2px 2px 10px black;
-  font-weight: 100;
+  font-weight: 400;
 }
 
 h2 {
-  font-family: 'Vast Shadow', cursive;
+  font-family: 'Baloo 2', cursive;
   font-size: 5rem;
   text-align: center;
-  font-weight: 400;
+  font-weight: 800;
 }
 
 h3 {
