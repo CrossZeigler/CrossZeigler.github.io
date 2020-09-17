@@ -40,7 +40,7 @@ h2 {
   font-family: 'Vast Shadow', cursive;
   font-size: 5rem;
   text-align: center;
-  font-weight: 800;
+  font-weight: 400;
 }
 
 h3 {
@@ -55,10 +55,11 @@ p, li {
 /* || header layout */
 
 .header {
+  font-family: 'Baloo 2', cursive;
   margin-bottom: 10px;
   display: flex;
   flex-flow: row wrap;
-  font-weight: 300;
+  font-weight: 200;
 }
 
 body > * {
