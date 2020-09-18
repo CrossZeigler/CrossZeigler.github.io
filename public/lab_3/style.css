@@ -20,7 +20,7 @@ body {
 /* || typography */
 
 h1, h2, h3 {
-  font-family: 'Cinzel Decorative', cursive;
+  font-family: 'Baloo 2', cursive;
   color: #2a2a2a;
 }
 
@@ -60,7 +60,7 @@ p, li {
   margin-bottom: 10px;
   display: flex;
   flex-flow: row wrap;
-  font-weight: 200;
+  font-weight: 800;
 }
 
 body > * {
