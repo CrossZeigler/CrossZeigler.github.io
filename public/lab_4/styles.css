@@ -52,7 +52,7 @@ body {
 
 .flex-outer > li > label,
 .flex-outer li p {
-  flex: 1 0 120px;
+  flex: 1 0 125px;
   max-width: 220px;
 }
 
