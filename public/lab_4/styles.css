@@ -22,8 +22,15 @@ body {
 }
 
 .flex-outer {
-  max-width: 800px;
+  margin-left: 0px;
+  max-width: 1000px;
   margin: 0 auto;
+}
+
+.center {
+  margin: auto;
+  width: 30%;
+  padding: 50px;
 }
 
 .flex-outer li,
@@ -53,12 +60,12 @@ body {
 .flex-outer > li > label,
 .flex-outer li p {
   flex: 1 0 125px;
-  max-width: 220px;
+  max-width: 225px;
 }
 
 .flex-outer > li > label + *,
 .flex-inner {
-  flex: 1 0 220px;
+  flex: 1 0 225px;
 }
 
 .flex-outer li p {
@@ -67,6 +74,7 @@ body {
 
 .flex-outer li input:not([type='checkbox']),
 .flex-outer li textarea {
+  margin-left: 0px;
   padding: 15px;
   border: none;
 }
@@ -83,5 +91,25 @@ body {
 }
 
 .flex-inner li {
-  width: 100px;
+  width: 80px;
+}
+
+.button {
+  /* Align buttons with the text fields */
+  margin-left: 0;
+  padding: 6px 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  border-radius: 3px;
+}
+
+button {
+  /* This extra margin represent roughly the same space as the space
+     between the labels and their text fields */
+  margin-left: 0;
+  padding: 6px 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  border-radius: 3px;
+
 }
