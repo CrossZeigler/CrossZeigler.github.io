@@ -1,21 +1,116 @@
 <!DOCTYPE html>
 <html lang = "en">
     <head>
+
       <meta name="author" content="Cross Zeigler">
+
         <title>Cross Zeigler</title>
-        <style>
+
+        <link href="styles.css" type = "text/css" rel="stylesheet">
+ <!--     
+   <style>
 
             em { 
               font-style: italic;
             }
             </style>
+            
+          -->  
     </head>
+
     <body>
 
+      <h1 class = "flex-outer">Cross Zeigler's Lab 4</h1>
+
+      <!-- Container class -->
+      <div class = "container">
+      
+        <!-- Form Beginning -->
+      <form action = "https://crosszeigler.github.io/public/lab_4/index.html" method="post">
+
+        <ul class = "flex-outer">
+
+          <!-- First Name input -->
+          <li>
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" placeholder="Enter your first name here" maxlength="140">
+          </li>
+
+          <!-- Last Name input -->
+          <li>
+            <label for="last-name">Last Name</label>
+            <input type = "text" id = "last-name" placeholder = "Enter your last name here" maxlength="140">
+          </li>
+
+          <!-- Email input -->
+          <li>
+            <label for="mail">E-mail</label>
+            <input type = "email" id = "mail" name = "user_email" placeholder = "Enter your email here">
+          </li>
+
+          <!-- Phone number input -->
+          <li>
+            <label for="phone">Phone</label>
+            <input type = "tel" id = "phone" placeholder = "Enter your phone here">
+          </li>
+          
+          <!-- Message (textarea) input -->
+          <li>
+            <label for="message">Text Field</label>
+            <textarea rows = "5" cols = "33" id = "message" placeholder = "Enter your message here"></textarea>
+          </li>
+
+          <!-- Age List Element Beginning-->
+          <li>
+            <p>Age</p>
+
+            <!-- Age List Beginning -->
+            <ul class="flex-inner">
+
+              <!-- list items here -->
+
+              <!-- Ages 18-35 Checkbox -->
+              <li>
+                <input type = "checkbox" id = "eighteen-to-thirtyfive">
+                <label for="eighteen-to-thirtyfive">18-35</label>
+              </li>
+
+              <!-- Ages 35-50 Checkbox -->
+              <li>
+                <input type = "checkbox" id = "thirtyfive-to-fifty">
+                <label for = "thirtyfive-to-fifty">35-50</label>
+              </li>
+
+              <!-- Ages 50-65 Checkbox -->
+              <li>
+                <input type = "checkbox" id = "fifty-to-sixtyfive">
+                <label for = "fifty-to-sixtyfive">50-65</label>
+              </li>
+
+            </ul>
+            <!-- Age List Ending -->
+
+          </li>
+          <!-- Age List Element Ending -->
+
+
+
+          <!-- Submit Button -->
+          <li>
+            <button type="submit">Submit Form</button>
+          </li>
+
+        </ul>
+
+      </form>
+      <!-- Form Ending -->
 
 
 
 
         
+    </div>
+    <!-- End of container class -->
+
         </body>
 </html>
