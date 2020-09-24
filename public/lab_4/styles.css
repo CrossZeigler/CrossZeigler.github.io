@@ -26,8 +26,8 @@ body {
 
 .flex-outer {
   margin-left: 0px;
-  max-width: 1000px;
-  margin: 0 auto;
+  max-width: 800px;
+  margin: 0;
   padding: 0px 16px;
 }
 
