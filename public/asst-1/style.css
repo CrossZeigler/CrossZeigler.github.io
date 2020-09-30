@@ -16,3 +16,13 @@ body {
   margin: 0 auto;
   background-color: #3498db;
 }
+
+.container {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.container * {
+  box-sizing: border-box;
+}
