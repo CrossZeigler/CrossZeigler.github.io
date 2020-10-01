@@ -17,6 +17,16 @@ body {
   background-color: #3498db;
 }
 
+/* || header layout */
+
+.header {
+  font-family: 'Baloo 2', cursive;
+  margin-bottom: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  font-weight: 800;
+}
+
 .container {
   width: 80%;
   max-width: 1200px;
