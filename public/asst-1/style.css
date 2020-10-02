@@ -2,13 +2,12 @@
 * {
   margin: 0;
 }
-h1 {
-  color: #F2B218;
-}
 .header {
+  font-family: "Baloo Tammudu 2", cursive;
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  background-color:#1826f2;
+  background-color: #16405c;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 15px;
@@ -16,73 +15,57 @@ h1 {
 }
 
 body {
-  width: 100%;
-  min-width: 800px;
+  min-width: 375px;
   margin: 0 auto;
-  background-color: #3498db;
+  background-color: #84c8f5;
 }
 
 .wrapper {
-  background-color: #3498db;;
+  background-color: #84c8f5;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-self: center;
 }
-
-
-.content {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-}
-
 
 .profile p {
-  background-color: aliceblue;
+  font-weight: 500;
+  font-size: 1.25rem;
+  background-color: #ecf0f1;
   padding: 15px;
-
   border: solid 1px transparent;
 }
 
-
 .profile {
   margin-right: 15px;
+  padding: 20px 0;
+  align-self: flex-start;
+  justify-content: center;
 }
-
-
+.profile img {
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+  width: 195px;
+}
 .roles {
+  width: 65%;
   margin-top: 15px;
   padding: 10px;
-  background-color: aliceblue;
-}
-
-.left {
-  flex: 0 1 auto;
-  margin-right: 15px;
+  background-color: #ecf0f1;
 }
 
 /* || header layout */
-
-.header {
-  font-family: 'Baloo 2', cursive;
-  margin-bottom: 10px;
-  display: flex;
-  flex-flow: row wrap;
-  margin-bottom: 15px;
-  font-weight: 800;
-}
-
 .header img {
   display: block;
-  height: 60px;
+  height: 75px;
+  width: 100px;
   padding-top: 20.15px;
   border-radius: 0px;
 }
 
 .container {
-  width: 80%;
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1080px;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -90,45 +73,43 @@ body {
   justify-content: space-between;
 }
 
-
-.container * {
-  box-sizing: border-box;
-  justify-content: space-between;
-}
-
 /* || typography */
 
-h1, h2, h3 {
-  font-family: 'Baloo 2', cursive;
-  color: #2a2a2a;
-}
-
-p, input, li {
-  font-family: 'Roboto Condensed', sans-serif;
-  color: #2a2a2a;
+h1,
+h2,
+h3 {
+  font-family: "Baloo 2", cursive;
+  color: #324b5c;
 }
 
 h1 {
-  font-family: 'Baloo 2', cursive;
+  color: #84c8f5;
+}
+
+p,
+input,
+li {
+  font-family: "Roboto Condensed", sans-serif;
+  color: #324b5c;
+}
+
+h1 {
+  font-family: "Baloo 2", cursive;
   font-size: 4rem;
-  text-align: center;
   text-shadow: 2px 2px 10px black;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 h2 {
-  font-family: 'Baloo 2', cursive;
-  font-size: 5rem;
-  text-align: center;
-  font-weight: 400;
-}
-
-h3 {
-  font-size: 2.2rem;
+  font-family: "Baloo 2", cursive;
+  font-weight: 600;
+  font-size: 2.5rem;
+  color: #324b5c;
 }
 
 ol li h2 {
-  font-size: 2.2rem;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 /* || img layout */
@@ -136,32 +117,30 @@ img {
   border: 1px;
   border-radius: 4px;
   border-width: 1px;
-  border-style: solid;
-
-
 }
 
-/* Media Rules */
-
+/* Media Rules*/
 @media screen and (max-width: 1000px) {
   .profile {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     flex: 1 0 auto;
-    justify-content: space-evenly;
-    align-items: center;
-    margin: 0;
     margin-bottom: 15px;
+    margin-right: 0px;
+    align-items: center;
+  }
+  .profile p {
+    margin: 15px;
+  }
+  .header {
+    justify-content: space-evenly;
   }
 
   .container {
-    width: 80%;
-    max-width: 1200px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
     justify-content: center;
   }
 
@@ -169,15 +148,18 @@ img {
     border: 1px;
     border-radius: 4px;
     border-width: 1px;
-    border-style: solid;
-  
-  
   }
 
-  .left {
-    flex: 1 0 auto;
-    margin-right: 0px;
+  h1 {
+    font-weight: 500;
   }
-  
 
+  h2 {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+  ol li h2 {
+    font-size: 1rem;
+    font-weight: 400;
+  }
 }
