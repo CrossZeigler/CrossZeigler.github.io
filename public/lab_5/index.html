@@ -63,9 +63,10 @@
             <textarea name = "message" rows = "5" cols = "33" id="message" placeholder = "Enter your message here"></textarea>
           </li>
 
-          <!-- Age List Element Beginning-->
+          <!-- Fruit List Element Beginning-->
           <li>
-            <p>Age</p>
+              <!-- .checkbox-list-label -->
+            <p class="checkbox-list-label">Age</p>
 
             <!-- Age List Beginning -->
             <ul class="flex-inner">
@@ -98,10 +99,15 @@
 
 
 
-          <!-- Submit Button -->
+          <!-- List of buttons Button -->
           <li>
-            <button type="submit" id = "button" name = "button">Submit Form</button>
+              <!-- Submit Button -->
+            <button type="submit" class = "button" id = "button" name = "button" onclick="testFunction()">Submit Form</button>
+
+            <!-- Activate Button -->
+            <button type="submit" class = "button" id = "active_button" name = "button" onclick="testFunction()">Activate</button>
           </li>
+
 
         </ul>
 
@@ -114,6 +120,68 @@
         
     </div>
     <!-- End of container class -->
+
+
+
+    <!-- Javascript Begins -->
+    <script>
+
+            /* Test Function*/
+    function testFunction() {
+        fetch('/api')
+        .then((response) => response.text())
+        .then((response) => {
+             console.log(response);
+
+
+             /* Header Change */
+        let myHeading = document.querySelector('h1');
+        myHeading.textContent = 'Lab 5 For Cross Zeigler';
+
+        
+
+        /* Title Change */
+        let myTitle = document.querySelector('title');
+        myTitle.textContent = 'Cross Zeigler Lab 5';
+
+
+
+        /* Change checkboxes */
+        let fruitArr = ["Banana", "Apple", "Pear"];
+
+        const checkboxes = document.querySelectorAll('checkbox');
+
+        /*array1.forEach(element => console.log(element));*/
+
+        for (let i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].textContent = fruitArr[i];
+        }
+
+        
+        })
+        /* End of test function */
+
+        const fname = document.getElementById('fname');
+        const lname = document.getElementById('lname');
+
+        /* Random Function */
+        function random(number) {
+        return Math.floor(Math.random() * (number+1));
+        }
+
+        /* Background Color Change */
+        const rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+        document.body.style.backgroundColor = rndCol;
+        }
+
+
+
+        
+
+
+
+
+</script>
 
         </body>
 </html>

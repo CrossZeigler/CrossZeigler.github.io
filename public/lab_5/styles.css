@@ -96,12 +96,13 @@ body {
 }
 
 .flex-inner li {
-  width: 80px;
+  width: 95px;
 }
 
 .button {
   /* Align buttons with the text fields */
   margin-left: 0;
+  margin-right: 10px;
   padding: 6px 12px;
   text-transform: uppercase;
   letter-spacing: 1.2px;
@@ -112,9 +113,14 @@ button {
   /* This extra margin represent roughly the same space as the space
      between the labels and their text fields */
   margin-left: 0;
+  margin-right: 10px;
   padding: 6px 12px;
   text-transform: uppercase;
   letter-spacing: 1.2px;
   border-radius: 3px;
 
+}
+
+.checkbox-list-label {
+  
 }
