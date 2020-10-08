@@ -69,7 +69,7 @@
             <p class="checkbox-list-label">Age</p>
 
             <!-- Age List Beginning -->
-            <ul class="flex-inner">
+            <ul class='flex-inner'>
 
               <!-- list items here -->
 
@@ -102,10 +102,12 @@
           <!-- List of buttons Button -->
           <li>
               <!-- Submit Button -->
-            <button type="submit" class = "button" id = "button" name = "button" onclick="testFunction()">Submit Form</button>
+            <button type="submit" class = "button" id = "submit_button" name = "submit_button">Submit Form</button>
 
             <!-- Activate Button -->
-            <button type="submit" class = "button" id = "active_button" name = "button" onclick="testFunction()">Activate</button>
+            <button onclick="testFunction()" type="button" class = "button" id = "active_button" name = "active_button">Activate</button>
+
+
           </li>
 
 
@@ -154,15 +156,23 @@
 
 
         /* Change checkboxes, array */
-        let fruitArr = ["Banana", "Apple", "Pear"];
+        let fruitArr = ["banana", "apple", "pear"];
 
-        const checkboxes = document.querySelectorAll('checkbox');
+        const checkBoxes = document.querySelectorAll('.flex-inner li label');
 
-        /*array1.forEach(element => console.log(element));*/
+            checkBoxes.forEach((el, i) => {
+                const text = el.innerText;
+                console.log(el);
+                el.innerText = fruitArr[i];
+                
+            })
 
-        for (let i = 0; i < checkboxes.length; i++) {
-        checkboxes[i].textContent = fruitArr[i];
+
+            /*
+        for (let i = 0; i < checkBoxes.length; i++) {
+        checkBoxes[i].textContent = fruitArr[i];
         }
+        */
 
         
             })
