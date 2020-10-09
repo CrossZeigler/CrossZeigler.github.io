@@ -20,8 +20,6 @@ app.route('/api')
   })
   .post((req, res) => {
     console.log('POST request detected');
-    /* Sending stuff back, GET requests to get /api */
-    /* res.status(200).send('Hello World'); */
     console.log('Form data in res.body', req.body);
   });
 
