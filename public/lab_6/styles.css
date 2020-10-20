@@ -77,3 +77,16 @@ body {
   padding: 0 16px;
   margin:0 auto;
 }
+
+.header > h1 {
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  margin-bottom: 5px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
