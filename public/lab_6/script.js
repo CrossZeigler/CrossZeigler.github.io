@@ -72,7 +72,7 @@ document.body.addEventListener('submit', async (e) => {
       ol.className = 'flex-inner';
 
       // append or prepend list to form
-      $('form').append(oList);
+      $('form').prepend(oList);
 
       /* Inject list element where each country has
       a checkbox and label
