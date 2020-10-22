@@ -69,7 +69,7 @@ document.body.addEventListener('submit', async (e) => {
       // Create new ordered list to append to the index.html file
       // Also make its class flex-inner
       const oList = document.createElement('ol');
-      ol.className = 'flex-inner';
+      oList.className = 'flex-inner';
 
       // append or prepend list to form
       $('form').prepend(oList);
@@ -81,10 +81,33 @@ document.body.addEventListener('submit', async (e) => {
       -all checkbox elements have the same name (key for form data)
       -labels are attached to inputs using
       "for" and "id" attributes */
-      reverseArr.forEach((el, i) => {
-        const nuList = document.createElement('li');
-        $(nuList).append('<input type="checkbox" value=$(el.code) id=$(el.code) />');
-        $(nuList).append('label for=$(el.code)>$(el.name)</label>');
+      const nuFlex = document.querySelector('.flex-inner');
+
+      reverseArr.forEach((el) => {
+        // const nuList = document.createElement('li');
+        const nuList = nuFlex.appendChild(document.createElement('li'));
+        const checkBox = document.createElement('input');
+        checkBox.setAttribute('type', 'checkbox');
+        checkBox.setAttribute('id', `${el.code}`);
+        checkBox.setAttribute('value', `${el.code}`);
+        checkBox.setAttribute('name', `${el.name}`);
+        /* checkBox.type = 'checkbox';
+        checkBox.value = el.code;
+        checkBox.id = el.code; */
+
+        const nuLabel = document.createElement('label');
+        nuLabel.setAttribute('for', `${el.code}`);
+        nuLabel.innerText = `${el.name}`;
+        
+        /* nuLabel.htmlFor = el.code;
+        nuLabel.textContent = el.name; */
+        nuList.appendChild(checkBox);
+        nuList.appendChild(nuLabel);
+        /* $(nuList).append(checkBox);
+        $(nuList).append(nuLabel); */
+        
+        /* $(nuList).append('<input type="checkbox" value=$(el.code) id=$(el.code) />');
+        $(nuList).append('label for=$(el.code)>$(el.name)</label>'); */
         $(oList).append(nuList);
       });
 
