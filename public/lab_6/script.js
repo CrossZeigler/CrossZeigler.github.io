@@ -103,23 +103,8 @@ document.body.addEventListener('submit', async (e) => {
         nuLabel.textContent = el.name; */
         nuList.appendChild(checkBox);
         nuList.appendChild(nuLabel);
-        /* $(nuList).append(checkBox);
-        $(nuList).append(nuLabel); */
-        
-        /* $(nuList).append('<input type="checkbox" value=$(el.code) id=$(el.code) />');
-        $(nuList).append('label for=$(el.code)>$(el.name)</label>'); */
         $(oList).append(nuList);
       });
-
-      // eslint-disable-next-line no-plusplus
-      for (let i = 0; i < reverseArr.length; i++) {
-        console.log(reverseArr[i].name);
-      }
-
-      reverseArr.forEach((el) => {
-        console.log(el.name);
-      });
-
       console.log('fromServer', fromServer);
     })
     .catch((err) => console.log(err));
