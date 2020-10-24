@@ -51,9 +51,6 @@ document.body.addEventListener('submit', async (e) => {
       // Create a new list of 10 elements
       const tempArr = range(10);
 
-      // Array to check for repeating values
-      const repArr = range(10);
-
       /* .map() allows us to put an array in,
        do something with it, and return the full array
        Use .map() to map countries from tempArr to new array
