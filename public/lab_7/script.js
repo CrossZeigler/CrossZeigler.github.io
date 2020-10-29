@@ -41,8 +41,9 @@ function runThisWithResultsFromServer(jsonFromServer) {
   // Process your restaurants list
   // Make a configuration object for your chart
   // Instantiate your chart
-  const reorganizedData = convertRestaurantsToCategories(jsonFromServer);
-  const options = makeYourOptionsObject(reorganizedData);
+  // Deleting reorganized Data and options makes page work. Why?
+  // const reorganizedData = convertRestaurantsToCategories(jsonFromServer);
+  // const options = makeYourOptionsObject(reorganizedData);
   // const chart = new CanvasJS.Chart('chartContainer', options);
   const chart = new CanvasJS.Chart('chartContainer', {
     animationEnabled: true,
