@@ -26,7 +26,8 @@ app.route('/api')
     console.log('GET request detected');
     res.send(`Lab 5 for ${process.env.NAME}`);
   })
-  .post((req, res) => {
+  /* Callback for lab 7 */
+  .post(async (req, res) => {
     console.log('POST request detected');
     /* res.status(200).send('Hello World'); */
     res.json(countries);
