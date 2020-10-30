@@ -1,6 +1,23 @@
 function convertRestaurantsToCategories(restaurantList) {
   // process your restaurants here!
-  return list;
+  const nuList = restaurantList.reduce((collection, item, i) => {
+    // for each item, check if we have a category for that item already
+    const findCat = collection.find((findItem) => findItem.label === item.category);
+
+    if (!findCat) {
+      collection.push({
+        label: item.category,
+        y: 1
+      });
+    } 
+    else {
+      const position = collection.findIndex((el) => el.label === item.category);
+      // eslint-disable-next-line no-param-reassign
+      collection[position].y += 1;
+    }
+    return collection;
+  }, []);
+  return nuList;
 }
 
 function makeYourOptionsObject(datapointsFromRestaurantsList) {
@@ -9,7 +26,7 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
     // add an array of colors here https://canvasjs.com/docs/charts/chart-options/colorset/
   ]);
 
-  return {
+  const returnObject = {
     animationEnabled: true,
     colorSet: 'customColorSet1',
     title: {
@@ -33,6 +50,7 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
       dataPoints: datapointsFromRestaurantsList
     }]
   };
+  return returnObject;
 }
 
 function runThisWithResultsFromServer(jsonFromServer) {
@@ -42,10 +60,10 @@ function runThisWithResultsFromServer(jsonFromServer) {
   // Make a configuration object for your chart
   // Instantiate your chart
   // Deleting reorganized Data and options makes page work. Why?
-  // const reorganizedData = convertRestaurantsToCategories(jsonFromServer);
-  // const options = makeYourOptionsObject(reorganizedData);
-  // const chart = new CanvasJS.Chart('chartContainer', options);
-  const chart = new CanvasJS.Chart('chartContainer', {
+  const reorganizedData = convertRestaurantsToCategories(jsonFromServer);
+  const options = makeYourOptionsObject(reorganizedData);
+  const chart = new CanvasJS.Chart('chartContainer', options);
+  /* const chart = new CanvasJS.Chart('chartContainer', {
     animationEnabled: true,
 
     title: {
@@ -85,7 +103,7 @@ function runThisWithResultsFromServer(jsonFromServer) {
         { y: 134, label: 'US' }
       ]
     }]
-  });
+  }); */
   chart.render();
 }
 
