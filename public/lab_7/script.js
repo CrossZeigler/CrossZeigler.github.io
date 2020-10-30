@@ -25,7 +25,9 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
     '#cc0000',
     '#175cb6',
     '#3CB371',
-    '#ffbf00'
+    '#ffbf00',
+    '#ff6600',
+    '#8600b3'
   ]);
 
   const returnObject = {
