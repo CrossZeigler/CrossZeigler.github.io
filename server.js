@@ -32,7 +32,9 @@ app.route('/api')
     console.log('POST request detected');
     /* res.status(200).send('Hello World'); */
     res.json(countries);
-    console.log('Form data in res.body', req.body);
+    /* console.log('Form data in res.body', req.body); */
+    const nuOutput = await fetch(data.json());
+    console.log('fetch request data', data);
   });
 
 app.listen(port, () => {
