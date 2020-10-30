@@ -32,7 +32,7 @@ app.route('/api')
     const data = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
     /* Second await statement */
     const nuJson = await data.json();
-    res.send(nuJson);
+    res.json(nuJson);
     console.log('POST request detected');
     /* res.status(200).send('Hello World'); */
     res.json(countries);
