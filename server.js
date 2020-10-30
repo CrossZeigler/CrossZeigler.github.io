@@ -28,13 +28,15 @@ app.route('/api')
   })
   /* Callback for lab 7 */
   .post(async (req, res) => {
+    /* First await statement */
     const data = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
+    /* Second await statement */
+    const nuJson = await data.json();
     console.log('POST request detected');
     /* res.status(200).send('Hello World'); */
     res.json(countries);
     /* console.log('Form data in res.body', req.body); */
-    const nuOutput = await fetch(data.json());
-    console.log('fetch request data', data);
+    console.log('fetch request data', nuJson);
   });
 
 app.listen(port, () => {
