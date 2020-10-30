@@ -69,8 +69,7 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
       type: 'bar',
       name: 'restaurants',
       axisYType: 'secondary',
-      dataPoints: datapointsFromRestaurantsList,
-      stepSize: 200
+      dataPoints: datapointsFromRestaurantsList
     }]
   };
   return returnObject;
