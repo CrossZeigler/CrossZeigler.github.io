@@ -1,0 +1,24 @@
+function databaseInitialize {
+
+    const DB = new sqlite3.Database(DB_PATH, function(err){
+  if (err) {
+      console.log(err)
+      return
+  }
+  console.log('Connected to ' + DB_PATH + ' database.')
+});
+
+CREATE TABLE IF NOT EXISTS foods
+(
+  name text NOT NULL,
+  category text NOT NULL,
+  inspection_date text NOT NULL,
+  inspection_results text NOT NULL UNIQUE,
+  city text,
+  state text, 
+  zip text, 
+  owner text, 
+  type text
+);
+
+}
