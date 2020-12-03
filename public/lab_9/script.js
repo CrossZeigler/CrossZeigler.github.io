@@ -1,16 +1,15 @@
-function convertRestaurantsToCategories(restaurantList) {
-  // process your restaurants here!
-  const nuList = restaurantList.reduce((collection, item, i) => {
-    // for each item, check if we have a category for that item already
-    const findNu = collection.find((findItem) => findItem.label === item.category);
+function convertCrimesToCategories(crimeList) {
+  // process your crimes here!
+  const nuList = crimeList.reduce((collection, item, i) => {
+    // for each item, check if we have a clearance_code_inc_type for that item already
+    const findNu = collection.find((findItem) => findItem.label === item.clearance_code_inc_type);
 
     if (!findNu) {
       collection.push({
-        label: item.category,
+        label: item.clearance_code_inc_type,
         y: 1
       });
-    } 
-    else {
+    } else {
       findNu.y += 1;
     }
     return collection;
@@ -18,7 +17,7 @@ function convertRestaurantsToCategories(restaurantList) {
   return nuList;
 }
 
-function makeYourOptionsObject(datapointsFromRestaurantsList) {
+function makeYourOptionsObject(datapointsFromCrimeList) {
   // set your chart configuration here!
   CanvasJS.addColorSet('customColorSet1', [
     // add an array of colors here https://canvasjs.com/docs/charts/chart-options/colorset/
@@ -34,7 +33,7 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
     animationEnabled: true,
     colorSet: 'customColorSet1',
     title: {
-      text: 'Places To Eat Out In Future'
+      text: 'PG County Crime Visualization'
     },
     axisX: {
       interval: 1,
@@ -43,7 +42,7 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
     axisY2: {
       interlacedColor: 'rgba(1,77,101,.2)',
       gridColor: 'rgba(1,77,101,.1)',
-      title: 'Restaurants By Category',
+      title: 'Crimes By Category',
       labelFontSize: 12,
       scaleBreaks: {
         type: 'wavy',
@@ -67,9 +66,9 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
     },
     data: [{
       type: 'bar',
-      name: 'restaurants',
+      name: 'crimes',
       axisYType: 'secondary',
-      dataPoints: datapointsFromRestaurantsList
+      dataPoints: datapointsFromCrimeList
     }]
   };
   return returnObject;
@@ -82,7 +81,7 @@ function runThisWithResultsFromServer(jsonFromServer) {
   // Make a configuration object for your chart
   // Instantiate your chart
   // Deleting reorganized Data and options makes page work. Why?
-  const reorganizedData = convertRestaurantsToCategories(jsonFromServer);
+  const reorganizedData = convertCrimesToCategories(jsonFromServer);
   const options = makeYourOptionsObject(reorganizedData);
   const chart = new CanvasJS.Chart('chartContainer', options);
   /* const chart = new CanvasJS.Chart('chartContainer', {
