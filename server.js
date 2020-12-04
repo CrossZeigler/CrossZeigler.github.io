@@ -15,83 +15,75 @@ const port = process.env.PORT || 3000;
 
 /* Sqlite stuff start */
 const dbSettings = {
-	filename: './tmp/database.db',
-	driver: sqlite3.Database
-	};
+  filename: './tmp/database.db',
+  driver: sqlite3.Database
+};
+const dbu = open.dbSettings;
 /* import sqlite3 */
+async function dataFetch() {
+  const muData = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
+  const muJson = await muData.json();
+  res.json(muJson);
+  console.log('POST request detected');
 
-const sqlite3 = require('sqlite3').verbose();
-const DB_PATH = ':memory:';
-
-const DB = new sqlite3.Database(DB_PATH, function(err){
-  if (err) {
-      console.log(err)
-      return
-  }
-  console.log('Connected to ' + DB_PATH + ' database.')
-});
-
-DB.close()
-
-const DBu= new sqlite3.Database(DB_PATH, function(err){
-  if (err) {
-      console.log(err)
-      return
-  }
-  console.log('Connected to ' + DB_PATH + ' database.')
-
-// ADD THIS CODE BELOW
-  DBu.exec('PRAGMA foreign_keys = ON;', function(error)  {
-      if (error){
-          console.error("Pragma statement didn't work.")
-      } else {
-          console.log("Foreign Key Enforcement is on.")
-      }
-  });
-});
-
-CREATE TABLE IF NOT EXISTS Users
-(
-  id integer NOT NULL PRIMARY KEY,
-  login text NOT NULL UNIQUE,
-  password text NOT NULL,
-  email text NOT NULL UNIQUE,
-  first_name text,
-  last_name text
-);
-
-CREATE TABLE IF NOT EXISTS Blogs (
-  id integer NOT NULL PRIMARY KEY,
-  user_id integer NOT NULL UNIQUE,  <-- Add this in
-  blog text,
-  title text NOT NULL,
-  publish_date date,
-      FOREIGN KEY (user_id) REFERENCES Users(id)  <-- Add this
-);
-
-dbSchema = `CREATE TABLE IF NOT EXISTS Users (
-  id integer NOT NULL PRIMARY KEY,
-  login text NOT NULL UNIQUE,
-  password text NOT NULL,
-  email text NOT NULL UNIQUE,
-  first_name text,
-  last_name text
-);
-
-CREATE TABLE IF NOT EXISTS Blogs (
-  id integer NOT NULL PRIMARY KEY,
-  user_id integer NOT NULL UNIQUE,
-  blog text&nbsp;,
-  title text NOT NULL,
-  publish_date date,
-      FOREIGN KEY (user_id) REFERENCES Users(id)
-);`
-
-DB.exec(dbSchema, function(err){
-if (err) {
-  console.log(err)
+  return muJson.json();
 }
-});
+
+async function insertIntoDB(data) {
+  try {
+    const restaurantName = data.name;
+    /* const category = data.category; */
+    const {category} = data;
+
+    await db.exec(`INSERT INTO restaurants (restaurant_name, category) VALUES ("${restaurant_name}", "${category}")`);
+    console.log(`${restaurantName} and ${category} inserted`);
+  }
+
+  catch (e) {
+    console.log('Error on insertion');
+    console.log(e);
+  }
+}
+
+async function databaseInitialize(dbSettings) {
+  try {
+    const db = await open(dbSettings);
+    await db.exec(`CREATE TABLE IF NOT EXISTS restaurants (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      restaurant_name TEXT,
+      category TEXT)
+      `)
+    const data = await dataFetch();
+    data.forEach((entry) => { insertIntoDB(entry) });
+    const test = await db.get('SELECT * FROM restaurants')
+    console.log('Success');
+  }
+  catch (e) {
+    console.log('Error loading Database');
+    console.log(e);
+  }
+}
+
+async function query(db) {
+  const result = await db.all('SELECT category, COUNT(restaurant_name) FROM restaurants GROUP BY category');
+  return result;
+}
+
+app.route('/sql')
+  .get((req, res) => {
+    console.log('GET detected');
+  })
+  .post(async (req, res) => {
+    console.log('POST request detected');
+    console.log('Form data in res.body', req.body);
+    // This is where the SQL retrieval function will be:
+    // Please remove the below variable
+    const db = await open(dbSettings);
+    const output = await query(db);
+    // This output must be converted to SQL
+    res.json(output);
+  });
+
 /* Sqlite stuff end */
 
 app.use(express.urlencoded({ extended: true }));

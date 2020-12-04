@@ -1,23 +1,3 @@
-function convertRestaurantsToCategories(restaurantList) {
-  // process your restaurants here!
-  const nuList = restaurantList.reduce((collection, item, i) => {
-    // for each item, check if we have a category for that item already
-    const findNu = collection.find((findItem) => findItem.label === item.category);
-
-    if (!findNu) {
-      collection.push({
-        label: item.category,
-        y: 1
-      });
-    } 
-    else {
-      findNu.y += 1;
-    }
-    return collection;
-  }, []);
-  return nuList;
-}
-
 function makeYourOptionsObject(datapointsFromRestaurantsList) {
   // set your chart configuration here!
   CanvasJS.addColorSet('customColorSet1', [
@@ -82,7 +62,7 @@ function runThisWithResultsFromServer(jsonFromServer) {
   // Make a configuration object for your chart
   // Instantiate your chart
   // Deleting reorganized Data and options makes page work. Why?
-  const reorganizedData = convertRestaurantsToCategories(jsonFromServer);
+  const reorganizedData = jsonFromServer;
   const options = makeYourOptionsObject(reorganizedData);
   const chart = new CanvasJS.Chart('chartContainer', options);
   /* const chart = new CanvasJS.Chart('chartContainer', {
@@ -133,7 +113,7 @@ function runThisWithResultsFromServer(jsonFromServer) {
 document.body.addEventListener('submit', async (e) => {
   e.preventDefault(); // this stops whatever the browser wanted to do itself.
   const form = $(e.target).serializeArray();
-  fetch('/api', {
+  fetch('/sql', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
