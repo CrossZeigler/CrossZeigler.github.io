@@ -1,0 +1,297 @@
+/*body {
+  margin: 0px;
+  overflow: hidden;
+}*/
+
+rect {
+  fill: steelblue;
+}
+
+  body {
+    /* Controls how far everything stretches across the page*/
+    width: 70%;
+    min-width: 800px;
+    margin: 0 auto;
+    background-color: #84c8f5
+    /*rgb(31, 31, 190);*/
+  }
+
+.viz-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+}
+.viz-container .top {
+  flex-grow: 1;
+  display: flex;
+}
+
+svg {
+  background-color: white
+    width: 70%;
+  margin-top: 10px;
+}
+
+wvg {
+  background-color: white
+    width: 70%;
+  margin-top: 10px;
+}
+
+.viz-container .bottom {
+  flex-grow: 1;
+  display: flex;
+}
+
+.stacked-bar {
+  flex-grow: 1;
+  background: white;
+}
+
+.map {
+  flex-grow: 1;
+  background: green;
+}
+
+.simple-bars {
+  flex-grow: 1;
+  background: blue;
+}
+
+.scatter-plot {
+  flex-grow: 1;
+  background: purple;
+}
+
+.color-legend {
+  width: 225px;
+  background: cyan;
+}
+
+.car-maker-finishes {
+  flex-grow: 1;
+  background: magenta;
+}
+
+pre {
+  font-size: 7em;
+}
+.tick line {
+  stroke: #C0C0BB;
+}
+.tick text {
+  fill: #635F5D;
+}
+.mark {
+  opacity: 0.9;
+}
+.axis-label {
+  font-size: 1.5em;
+  fill: #635F5D;
+}
+label,
+select {
+  font-size: 1.5em;
+}
+select option {
+  font-size: 1rem;
+}
+.menus-container {
+  font-size: 1em;
+  margin-top: 20px;
+  margin-right: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* */
+
+
+
+/* || General setup */
+
+html, body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    font-size: 10px;
+  
+  }
+  
+  /* Affects background color of site, everything that is "behind"
+  the site*/
+  body {
+    /* Controls how far everything stretches across the page*/
+    width: 70%;
+    min-width: 800px;
+    margin: 0 auto;
+    background-color: #84c8f5
+    /*rgb(31, 31, 190);*/
+  }
+  
+  /* || typography */
+  
+  h1, h2, h3 {
+    font-family: 'Baloo 2', cursive;
+    color: #2a2a2a;
+  }
+  
+  p, input, li {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #2a2a2a;
+  }
+  
+  h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 4rem;
+    text-align: center;
+    /*text-shadow: 2px 2px 1px black;*/
+    font-weight: 400;
+  }
+  
+  h2 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 5rem;
+    text-align: center;
+    font-weight: 800;
+  }
+  
+  h3 {
+    font-size: 2.2rem;
+  }
+  
+  p, li {
+    font-size: 1.6rem;
+    line-height: 1.5;
+  }
+  
+  /* || header layout */
+  
+  .header {
+    font-family: 'Baloo 2', cursive;
+    margin-bottom: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    font-weight: 800;
+    background-color: #1372b2;
+    padding: 1%;
+  }
+  
+  body > * {
+    background-color: white;
+    padding: 1%;
+  }
+  
+  /* Affects color and padding of main body (article, aside) header
+  footer, */
+  .main, nav, .article, .aside, .footer, section {
+    background-color: rgba(0,255,0,0.5);
+    padding: 1%;
+  }
+
+
+
+nav {
+    background-color: #1372b2;
+    padding: 1%;
+  }
+  
+  h1 {
+    flex: 5;
+    text-transform: uppercase;
+  }
+  
+  .header img {
+    display: block;
+    height: 60px;
+    padding-top: 20.15px;
+  }
+  
+  nav {
+    height: 50px;
+    flex: 100%;
+    display: flex;
+  }
+  
+  nav ul {
+    padding: 0;
+    list-style-type: none;
+    flex: 2;
+    display: flex;
+  }
+  
+  nav li {
+    display: inline;
+    text-align: center;
+    flex: 1;
+  }
+  
+  /* Affects navigation bar text */
+  nav a, nav span {
+    display: inline-block;
+    font-size: 2rem;
+    height: 3rem;
+    line-height: 1.7;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
+  
+  }
+  
+  /* || main layout */
+  
+  .main {
+    display: flex;
+  }
+  
+  .article, .section {
+    flex: 4;
+  }
+  
+  .aside {
+    display: flex;
+    flex-flow: row wrap;
+    flex: 2;
+  }
+  
+  .aside a {
+    display: flex;
+    flex-basis: 50%;
+  }
+  
+  .aside img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .footer {
+    margin-top: 10px;
+  }
+  
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
