@@ -12,10 +12,10 @@ import {
 const titleText = 'Top 10 Most Populous Countries';
 const xAxisLabelText = 'Population';
 
-const savage = select('svg');
+const wavage = select('svg');
 
-const width = +savage.attr('width');
-const height = +savage.attr('height');
+const width = +wavage.attr('width');
+const height = +wavage.attr('height');
 
 const render = data => {
   const xValue = d => d['population'];
@@ -33,7 +33,7 @@ const render = data => {
     .range([0, innerHeight])
     .padding(0.1);
   
-  const g = savage.append('g')
+  const g = wavage.append('g')
     .attr('transform', `translate(${margin.left},${margin.top})`);
   
   const xAxisTickFormat = number =>
@@ -79,6 +79,6 @@ csv('data.csv').then(data => {
   });
   render(data);
   
-  return <div className="stacked-bar" ref={ref} />;
+  return <div className="stacked-bar2" ref={ref} />;
 });
 
