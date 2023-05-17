@@ -1,69 +1,81 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import { csv, arc, pie, scaleBand, scaleLinear, max, format } from 'd3';
-import { useData } from './useData';
-import { AxisBottom } from './AxisBottom';
-import { AxisLeft } from './AxisLeft';
-import { Marks } from './Marks';
+import {
+  select,
+  csv,
+  scaleLinear,
+  max,
+  scaleBand,
+  axisLeft,
+  axisBottom,
+  format
+} from 'd3';
 
-const width = 960;
-const height = 500;
-const margin = { top: 20, right: 30, bottom: 65, left: 220 };
-const xAxisLabelOffset = 50;
+const titleText = 'Top 10 Most Populous Countries';
+const xAxisLabelText = 'Population';
 
-const App = () => {
-  const data = useData();
+const svg = select('svg');
 
-  if (!data) {
-    return <pre>Loading...</pre>;
-  }
+const width = +svg.attr('width');
+const height = +svg.attr('height');
 
-  const innerHeight = height - margin.top - margin.bottom;
+const render = data => {
+  const xValue = d => d['population'];
+  const yValue = d => d.country;
+  const margin = { top: 50, right: 40, bottom: 77, left: 180 };
   const innerWidth = width - margin.left - margin.right;
-
-  const yValue = d => d.Country;
-  const xValue = d => d.Population;
-
-  const siFormat = format('.2s');
-  const xAxisTickFormat = tickValue => siFormat(tickValue).replace('G', 'B');
-
-  const yScale = scaleBand()
-    .domain(data.map(yValue))
-    .range([0, innerHeight])
-    .paddingInner(0.15);
-
+  const innerHeight = height - margin.top - margin.bottom;
+  
   const xScale = scaleLinear()
     .domain([0, max(data, xValue)])
     .range([0, innerWidth]);
-
-  return (
-    <svg width={width} height={height}>
-      <g transform={`translate(${margin.left},${margin.top})`}>
-        <AxisBottom
-          xScale={xScale}
-          innerHeight={innerHeight}
-          tickFormat={xAxisTickFormat}
-        />
-        <AxisLeft yScale={yScale} />
-        <text
-          className="axis-label"
-          x={innerWidth / 2}
-          y={innerHeight + xAxisLabelOffset}
-          textAnchor="middle"
-        >
-          Population
-        </text>
-        <Marks
-          data={data}
-          xScale={xScale}
-          yScale={yScale}
-          xValue={xValue}
-          yValue={yValue}
-          tooltipFormat={xAxisTickFormat}
-        />
-      </g>
-    </svg>
-  );
+  
+  const yScale = scaleBand()
+    .domain(data.map(yValue))
+    .range([0, innerHeight])
+    .padding(0.1);
+  
+  const g = svg.append('g')
+    .attr('transform', `translate(${margin.left},${margin.top})`);
+  
+  const xAxisTickFormat = number =>
+    format('.3s')(number)
+      .replace('G', 'B');
+  
+  const xAxis = axisBottom(xScale)
+    .tickFormat(xAxisTickFormat)
+    .tickSize(-innerHeight);
+  
+  g.append('g')
+    .call(axisLeft(yScale))
+    .selectAll('.domain, .tick line')
+      .remove();
+  
+  const xAxisG = g.append('g').call(xAxis)
+    .attr('transform', `translate(0,${innerHeight})`);
+  
+  xAxisG.select('.domain').remove();
+  
+  xAxisG.append('text')
+      .attr('class', 'axis-label')
+      .attr('y', 65)
+      .attr('x', innerWidth / 2)
+      .attr('fill', 'black')
+      .text(xAxisLabelText);
+  
+  g.selectAll('rect').data(data)
+    .enter().append('rect')
+      .attr('y', d => yScale(yValue(d)))
+      .attr('width', d => xScale(xValue(d)))
+      .attr('height', yScale.bandwidth());
+  
+  g.append('text')
+      .attr('class', 'title')
+      .attr('y', -10)
+      .text(titleText);
 };
-const rootElement = document.getElementById('root');
-ReactDOM.render(<App />, rootElement);
+
+csv('data.csv').then(data => {
+  data.forEach(d => {
+    d.population = +d.population * 1000;
+  });
+  render(data);
+});
