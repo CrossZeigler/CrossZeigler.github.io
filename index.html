@@ -112,73 +112,75 @@
           <!-- Footer -->
 
 
-          <script>
-
-            // set the dimensions and margins of the graph
-            var margin = {top: 10, right: 30, bottom: 40, left: 70},
-                width = 460 - margin.left - margin.right,
-                height = 400 - margin.top - margin.bottom;
-            
-            // append the svg object to the body of the page
-            var svg = d3.select("#my_dataviz")
-              .append("svg")
-                .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
-              .append("g")
-                .attr("transform",
-                      "translate(" + margin.left + "," + margin.top + ")");
-            
-            //Read the data
-            d3.csv("https://gist.githubusercontent.com/CrossZeigler/7bd520fb3d1002b3dd6680c060fe8036/raw/7c37eeb61aa84a3a3ec7a52370e888e4a8da0433/AIT684_FinalDataSetPlus.csv", function(data) {
-            
-              // Add X axis
-              var x = d3.scaleLinear()
-                .domain([0, 10])
-                .range([ 0, width ]);
-              svg.append("g")
-                .attr("transform", "translate(0," + height + ")")
-                .call(d3.axisBottom(x));
-            
-              // Add Y axis
-              var y = d3.scaleLinear()
-                .domain([0, 15])
-                .range([ height, 0]);
-              svg.append("g")
-                .call(d3.axisLeft(y));
-            
-            // Customization
-              svg.selectAll(".tick line").attr("stroke", "white")
-            
-              // Add X axis label:
-              svg.append("text")
-                  .attr("text-anchor", "end")
-                  .attr("x", width/2 + margin.left)
-                  .attr("y", height + margin.top + 25)
-                  .text("Happiness Score");
-            
-              // Y axis label:
-              svg.append("text")
-                  .attr("text-anchor", "end")
-                  .attr("transform", "rotate(-90)")
-                  .attr("y", -margin.left + 20)
-                  .attr("x", -margin.top - height/2 + 50)
-                  .text("Depression")
-            
-              // Add dots
-              svg.append('g')
-                .selectAll("dot")
-                .data(data)
-                .enter()
-                .append("circle")
-                  .attr("cx", function (d) { return x(d.Happiness_Score); } )
-                  .attr("cy", function (d) { return y(d.all_ages_dd_percent); } )
-                  .attr("r", 1.5)
-                  .style("fill", "#69b3a2")
-            
-            })
-            
-            </script>
     
     <script src="bundle.js"></script>
   </body>
+
+  <script>
+
+    // set the dimensions and margins of the graph
+    var margin = {top: 10, right: 30, bottom: 40, left: 70},
+        width = 460 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
+    
+    // append the svg object to the body of the page
+    var svg = d3.select("#my_dataviz")
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")");
+    
+    //Read the data
+    d3.csv("https://gist.githubusercontent.com/CrossZeigler/7bd520fb3d1002b3dd6680c060fe8036/raw/7c37eeb61aa84a3a3ec7a52370e888e4a8da0433/AIT684_FinalDataSetPlus.csv", function(data) {
+    
+      // Add X axis
+      var x = d3.scaleLinear()
+        .domain([0, 10])
+        .range([ 0, width ]);
+      svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+    
+      // Add Y axis
+      var y = d3.scaleLinear()
+        .domain([0, 15])
+        .range([ height, 0]);
+      svg.append("g")
+        .call(d3.axisLeft(y));
+    
+    // Customization
+      svg.selectAll(".tick line").attr("stroke", "white")
+    
+      // Add X axis label:
+      svg.append("text")
+          .attr("text-anchor", "end")
+          .attr("x", width/2 + margin.left)
+          .attr("y", height + margin.top + 25)
+          .text("Happiness Score");
+    
+      // Y axis label:
+      svg.append("text")
+          .attr("text-anchor", "end")
+          .attr("transform", "rotate(-90)")
+          .attr("y", -margin.left + 20)
+          .attr("x", -margin.top - height/2 + 50)
+          .text("Depression")
+    
+      // Add dots
+      svg.append('g')
+        .selectAll("dot")
+        .data(data)
+        .enter()
+        .append("circle")
+          .attr("cx", function (d) { return x(d.Happiness_Score); } )
+          .attr("cy", function (d) { return y(d.all_ages_dd_percent); } )
+          .attr("r", 1.5)
+          .style("fill", "#69b3a2")
+    
+    })
+    
+    </script>
+
 </html>
