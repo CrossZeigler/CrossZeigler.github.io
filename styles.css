@@ -193,7 +193,8 @@ html, body {
   /* Affects color and padding of main body (article, aside) header
   footer, */
   .main, nav, .article, .aside, .footer, section {
-    background-color: rgba(0,255,0,0.5);
+    background-color: #ecf0f1;
+    /*background-color: rgba(0,255,0,0.5);*/
     padding: 1%;
   }
 
